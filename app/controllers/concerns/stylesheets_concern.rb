@@ -9,7 +9,7 @@ module StylesheetsConcern
   end
 
   def use_stylesheet(stylesheet, force_inline_stylesheet: false)
-    return if @all_stylesheets.include?(stylesheet) && force_inline_stylesheet
+    return if @all_stylesheets.include?(stylesheet) && !force_inline_stylesheet
 
     if @inline || force_inline_stylesheet
       @inline_stylesheets << stylesheet
