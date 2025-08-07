@@ -11,7 +11,7 @@ class ApplicationComponent < ViewComponent::Base
 
   def before_render
     name = self.class.name.underscore
-    entrypoint = "app/components/#{name}/#{name}.js"
+    entrypoint = "app/components/#{name}/#{name}.css"
 
     use_stylesheet("/#{entrypoint}", force_inline_stylesheet:) if File.exist?(entrypoint)
   end

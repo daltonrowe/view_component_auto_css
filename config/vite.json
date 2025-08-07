@@ -2,7 +2,7 @@
   "all": {
     "sourceCodeDir": "app/javascript",
     "additionalEntrypoints": [
-      "app/components/**/*_component.{js,ts}",
+      "app/components/**/*_component.{js,ts,css}",
       "~/{assets,fonts,icons,images}/**/*"
     ],
     "watchAdditionalPaths": [

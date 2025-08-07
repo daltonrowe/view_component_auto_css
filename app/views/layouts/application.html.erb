@@ -25,13 +25,13 @@
 
     <!-- start inline sheets -->
     <% @inline_stylesheets.sort.each do |stylesheet| %>
-      <style><%== inline_stylesheet( stylesheet) %></style>
+      <style><%== inline_stylesheet(stylesheet) %></style>
     <% end %>
     <!-- end inline sheets -->
 
     <!-- start linked sheets -->
     <% @link_stylesheets.each do |stylesheet| %>
-      <%= vite_javascript_tag stylesheet %>
+      <%= vite_stylesheet_tag stylesheet %>
     <% end %>
     <!-- end inline sheets -->
 

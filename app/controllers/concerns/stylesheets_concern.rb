@@ -22,7 +22,7 @@ module StylesheetsConcern
     entry = ViteRuby.instance.manifest.resolve_entries(stylesheet)
     css = ""
 
-    entry[:stylesheets].each do |file|
+    entry[:scripts].each do |file|
       css += File.read("#{Rails.root}/public#{file}")
     end
 

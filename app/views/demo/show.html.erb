@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: column; gap: 20px;">
-  <h1>View Component CSS auto inclusion:</h1>
+  <h1 style="margin: 0;">View Component CSS auto inclusion:</h1>
 
   <div class="global_style">
     This is raw erb markup, it should be green.
@@ -15,4 +15,4 @@
   <%= render Demo3Component.new(force_inline_stylesheet: true) %>
 
   <pre><%= print_stylesheets %></pre>
-<div>
+</div>
