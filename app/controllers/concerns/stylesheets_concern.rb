@@ -8,10 +8,10 @@ module StylesheetsConcern
     @all_stylesheets = Set.new
   end
 
-  def use_stylesheet(stylesheet)
-    return if @all_stylesheets.include?(stylesheet)
+  def use_stylesheet(stylesheet, force_inline_stylesheet: false)
+    return if @all_stylesheets.include?(stylesheet) && force_inline_stylesheet
 
-    if @inline
+    if @inline || force_inline_stylesheet
       @inline_stylesheets << stylesheet
     else
       @link_stylesheets << stylesheet
