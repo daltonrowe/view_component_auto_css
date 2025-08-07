@@ -3,16 +3,30 @@ module StylesheetsConcern
 
   def setup_stylesheets
     @inline = true
-    @inline_stylesheets = []
-    @link_stylesheets = []
+    @inline_stylesheets = Set.new
+    @link_stylesheets = Set.new
+    @all_stylesheets = Set.new
   end
 
   def use_stylesheet(stylesheet)
+    return if @all_stylesheets.include?(stylesheet)
+
     if @inline
       @inline_stylesheets << stylesheet
     else
       @link_stylesheets << stylesheet
     end
+  end
+
+  def inline_stylesheet(stylesheet)
+    entry = ViteRuby.instance.manifest.resolve_entries(stylesheet)
+    css = ""
+
+    entry[:stylesheets].each do |file|
+      css += File.read("#{Rails.root}/public#{file}")
+    end
+
+    css
   end
 
   def print_stylesheets
@@ -28,7 +42,8 @@ module StylesheetsConcern
 
   included do
     helper_method :use_stylesheet
-    helper_method :insert_stylesheets
+    helper_method :inline_stylesheet
+    helper_method :end_inline_stylesheets
     helper_method :print_stylesheets
   end
 end
