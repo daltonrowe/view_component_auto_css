@@ -1,0 +1,1 @@
+import './demo2_component.css'
