@@ -4,30 +4,31 @@ module StylesheetsConcern
   def setup_stylesheets
     @inline = true
     @inline_stylesheets = []
-    @stylesheets = []
+    @link_stylesheets = []
   end
 
   def use_stylesheet(stylesheet)
     if @inline
       @inline_stylesheets << stylesheet
     else
-      @stylesheets << stylesheet
+      @link_stylesheets << stylesheet
     end
   end
 
   def print_stylesheets
     <<~HEREDOC
       Inlined Stylesheets: #{@inline_stylesheets.join(" ")}\n
-      Linked Stylesheets: #{@stylesheets.join(" ")}
+      Linked Stylesheets: #{@link_stylesheets.join(" ")}
     HEREDOC
   end
 
   def end_inline_stylesheets
-    @inline_stylesheets = false
+    @inline = false
   end
 
   included do
     helper_method :use_stylesheet
+    helper_method :insert_stylesheets
     helper_method :print_stylesheets
   end
 end
