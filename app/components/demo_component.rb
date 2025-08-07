@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-class DemoComponent < ViewComponent::Base
+class DemoComponent < ApplicationComponent
 end
