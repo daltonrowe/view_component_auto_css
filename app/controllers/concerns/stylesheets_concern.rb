@@ -31,8 +31,11 @@ module StylesheetsConcern
 
   def print_stylesheets
     <<~HEREDOC
-      Inlined Stylesheets: #{@inline_stylesheets.join(" ")}\n
-      Linked Stylesheets: #{@link_stylesheets.join(" ")}
+      Inlined Stylesheets:#{' '}
+      #{@inline_stylesheets.join("\n")}
+
+      Linked Stylesheets:#{' '}
+      #{@link_stylesheets.join(" ")}
     HEREDOC
   end
 
