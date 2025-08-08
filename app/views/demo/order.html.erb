@@ -1,23 +1,13 @@
-<% if params[:version] == 'A' %>
+<% if @version == 'A' %>
 
-  <%= render DemoComponent.new %>
-
-  <% end_inline_stylesheets %>
-
-  <%= render Demo2Component.new %>
-
-  <%= render Demo3Component.new(force_inline_stylesheet: true) %>
+  <%= render DemoOrderAComponent.new %>
+  <%= render DemoOrderBComponent.new %>
 
 <% end %>
 
-<% if params[:version] == 'B' %>
+<% if @version == 'B' %>
 
-  <%= render DemoComponent.new %>
-
-  <% end_inline_stylesheets %>
-
-  <%= render Demo2Component.new %>
-
-  <%= render Demo3Component.new(force_inline_stylesheet: true) %>
+  <%= render DemoOrderBComponent.new %>
+  <%= render DemoOrderAComponent.new %>
 
 <% end %>
