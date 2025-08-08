@@ -16,7 +16,9 @@ module ActiveSupport
         "rgb(255, 0, 0)" => "red",
         "rgb(255, 255, 0)" => "yellow",
         "rgb(0, 128, 0)" => "green",
-        "rgb(0, 0, 255)" => "blue"
+        "rgb(0, 0, 255)" => "blue",
+        "rgb(128, 0, 128)" => "purple",
+        "rgb(255, 192, 203)" => "pink"
       }
 
       backgrounds = evaluate_script <<~SCRIPT

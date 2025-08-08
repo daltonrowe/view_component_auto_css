@@ -1,0 +1,5 @@
+@import "demo_import2.css";
+
+.demo_import2_component {
+  background: yellow;
+}

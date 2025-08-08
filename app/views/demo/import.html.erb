@@ -1,18 +1,5 @@
-<div style="display: flex; flex-direction: column; gap: 20px;">
-  <h1 style="margin: 0;">View Component CSS auto inclusion:</h1>
+<%= render DemoImportComponent.new %>
 
-  <div class="global_style">
-    This is raw erb markup, it should be green.
-    <div>Styles are from global application.js imports.</div>
-  </div>
+<% end_inline_stylesheets %>
 
-  <%= render DemoComponent.new %>
-
-  <% end_inline_stylesheets %>
-
-  <%= render Demo2Component.new %>
-
-  <%= render Demo3Component.new(force_inline_stylesheet: true) %>
-
-  <pre><%= print_stylesheets %></pre>
-</div>
+<%= render DemoImport2Component.new %>

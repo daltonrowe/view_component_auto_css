@@ -1,7 +1,7 @@
 require "application_system_test_case"
 
-class BasicTest < ApplicationSystemTestCase
-  test "visiting the index" do
+class DemoTest < ApplicationSystemTestCase
+  test "visiting the basic demo" do
     visit basic_demo_url
 
     assert_inlined_style "demo_component"

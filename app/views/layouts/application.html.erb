@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "View Component Css" %></title>
+    <title><%= defined?(@page_title) ? @page_title : "View Component Auto CSS" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -50,7 +50,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <h1 style="margin: 0;"><%= @page_title %></h1>
+      <%= yield %>
+    </div>
 
   <pre><%= print_stylesheets %></pre>
   </body>
