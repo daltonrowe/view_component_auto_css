@@ -1,24 +1,15 @@
-# README
+# View Component Auto CSS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This implementation pattern aims to solve the problem of CSS pack management in a Vite based Rails setup.
+It compiles each View Component's CSS file a separate entrypoint
 
-Things you may want to cover:
+## ⚡️ Features
 
-* Ruby version
+- Only load CSS for components rendered on the page.
+- No need to manually chunk your CSS into per route bundles.
+- Use the same CSS inlined on the page, or linked externally.
 
-* System dependencies
+## ⚖️ Tradeoffs
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Will likely result in more plentiful, smaller CSS files.
+- Ordering of stylesheets is alphabetical to prevent unpredicatable specificity.
