@@ -1,12 +1,23 @@
-<div class="global_style">
-  This is raw erb markup, it should be green.
-  <div>Styles are from global application.js imports.</div>
-</div>
+<% if params[:version] == 'A' %>
 
-<%= render DemoComponent.new %>
+  <%= render DemoComponent.new %>
 
-<% end_inline_stylesheets %>
+  <% end_inline_stylesheets %>
 
-<%= render Demo2Component.new %>
+  <%= render Demo2Component.new %>
 
-<%= render Demo3Component.new(force_inline_stylesheet: true) %>
+  <%= render Demo3Component.new(force_inline_stylesheet: true) %>
+
+<% end %>
+
+<% if params[:version] == 'B' %>
+
+  <%= render DemoComponent.new %>
+
+  <% end_inline_stylesheets %>
+
+  <%= render Demo2Component.new %>
+
+  <%= render Demo3Component.new(force_inline_stylesheet: true) %>
+
+<% end %>

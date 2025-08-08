@@ -10,6 +10,8 @@ class DemoController < ApplicationController
   end
 
   def order
-    @page_title = "View Component Auto CSS Ordering"
+    params[:version] = "A" unless params[:version].present?
+
+    @page_title = "View Component Auto CSS Ordering (#{params[:version]})"
   end
 end
