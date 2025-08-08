@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "demo/basic" => "demo#basic", as: :basic_demo
+  get "demo/import" => "demo#import", as: :import_demo
 end

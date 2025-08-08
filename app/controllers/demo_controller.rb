@@ -3,4 +3,5 @@ class DemoController < ApplicationController
   before_action :setup_stylesheets
 
   def basic;end
+  def import;end
 end

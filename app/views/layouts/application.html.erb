@@ -24,14 +24,16 @@
     <%= vite_javascript_tag 'application' %>
 
     <!-- start inline sheets -->
-    <% @inline_stylesheets.sort.each do |stylesheet| %>
+    <% @inline_stylesheets.each do |stylesheet| %>
       <style><%== inline_stylesheet(stylesheet) %></style>
     <% end %>
     <!-- end inline sheets -->
 
     <!-- start linked sheets -->
-    <% @link_stylesheets.each do |stylesheet| %>
-      <%= vite_stylesheet_tag stylesheet %>
+    <% @link_stylesheets.each do |to_link| %>
+      <% link_stylesheet(to_link).each do |stylesheet| %>
+        <link rel="stylesheet" href="<%= stylesheet %>">
+      <% end %>
     <% end %>
     <!-- end inline sheets -->
 
@@ -49,5 +51,7 @@
 
   <body>
     <%= yield %>
+
+  <pre><%= print_stylesheets %></pre>
   </body>
 </html>

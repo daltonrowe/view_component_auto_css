@@ -6,6 +6,7 @@ module StylesheetsConcern
     @inline_stylesheets = Set.new
     @link_stylesheets = Set.new
     @all_stylesheets = Set.new
+    @rendered_stylesheets = []
   end
 
   def use_stylesheet(stylesheet, force_inline_stylesheet: false)
@@ -23,10 +24,23 @@ module StylesheetsConcern
     css = ""
 
     entry[:scripts].each do |file|
+      @rendered_stylesheets << file
       css += File.read("#{Rails.root}/public#{file}")
     end
 
     css
+  end
+
+  def link_stylesheet(stylesheet)
+    entry = ViteRuby.instance.manifest.resolve_entries(stylesheet)
+    hrefs = []
+
+    entry[:scripts].each do |file|
+      @rendered_stylesheets << file
+      hrefs << "#{Rails.root}/public#{file}"
+    end
+
+    hrefs
   end
 
   def print_stylesheets
@@ -35,7 +49,10 @@ module StylesheetsConcern
       #{@inline_stylesheets.join("\n")}
 
       Linked Stylesheets:#{' '}
-      #{@link_stylesheets.join(" ")}
+      #{@link_stylesheets.join("\n")}
+
+      Rendered Stylesheets:#{' '}
+      #{@rendered_stylesheets.join("\n")}
     HEREDOC
   end
 
@@ -46,6 +63,7 @@ module StylesheetsConcern
   included do
     helper_method :use_stylesheet
     helper_method :inline_stylesheet
+    helper_method :link_stylesheet
     helper_method :end_inline_stylesheets
     helper_method :print_stylesheets
   end
