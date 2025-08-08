@@ -1,0 +1,15 @@
+<% end_inline_stylesheets if @linked %>
+
+<% if @version == 'A' %>
+
+  <%= render DemoOrderAComponent.new %>
+  <%= render DemoOrderBComponent.new %>
+
+<% end %>
+
+<% if @version == 'B' %>
+
+  <%= render DemoOrderBComponent.new %>
+  <%= render DemoOrderAComponent.new %>
+
+<% end %>

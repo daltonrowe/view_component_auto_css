@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "View Component Css" %></title>
+    <title><%= defined?(@page_title) ? @page_title : "View Component Auto CSS" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -22,6 +22,21 @@
     <%= javascript_importmap_tags %>
     <%= vite_client_tag %>
     <%= vite_javascript_tag 'application' %>
+
+    <!-- start inline sheets -->
+    <% inline_stylesheets.each do |stylesheet| %>
+      <style><%== inline_stylesheet(stylesheet) %></style>
+    <% end %>
+    <!-- end inline sheets -->
+
+    <!-- start linked sheets -->
+    <% link_stylesheets.each do |stylesheet| %>
+      <% link_stylesheet(stylesheet).each do |href| %>
+        <link rel="stylesheet" href="<%= href %>">
+      <% end %>
+    <% end %>
+    <!-- end inline sheets -->
+
     <!--
       If using a TypeScript entrypoint file:
         vite_typescript_tag 'application'
@@ -35,6 +50,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <h1 style="margin: 0;"><%= @page_title %></h1>
+      <%= yield %>
+    </div>
+
+  <pre><%= print_stylesheets %></pre>
   </body>
 </html>

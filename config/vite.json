@@ -1,7 +1,13 @@
 {
   "all": {
     "sourceCodeDir": "app/javascript",
-    "watchAdditionalPaths": []
+    "additionalEntrypoints": [
+      "app/components/**/*_component.{js,ts,css}",
+      "~/{assets,fonts,icons,images}/**/*"
+    ],
+    "watchAdditionalPaths": [
+      "app/components/**/*_component.{js,ts}"
+    ]
   },
   "development": {
     "autoBuild": true,

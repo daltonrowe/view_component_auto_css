@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get "demo" => "demo#show"
+  get "demo/basic" => "demo#basic", as: :basic_demo
+  get "demo/import" => "demo#import", as: :import_demo
+  get "demo/order" => "demo#order", as: :order_demo
 end
