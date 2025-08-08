@@ -8,4 +8,8 @@ class DemoController < ApplicationController
   def import
     @page_title = "View Component Auto CSS Imports"
   end
+
+  def order
+    @page_title = "View Component Auto CSS Ordering"
+  end
 end
