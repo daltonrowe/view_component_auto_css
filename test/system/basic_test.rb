@@ -1,0 +1,12 @@
+require "application_system_test_case"
+
+class BasicTest < ApplicationSystemTestCase
+  test "visiting the index" do
+    visit basic_demo_url
+
+    assert_backgrounds ".global_style", 1, "green"
+    assert_backgrounds ".demo_component", 1, "red"
+    assert_backgrounds ".demo2_component", 1, "yellow"
+    assert_backgrounds ".demo3_component", 1, "blue"
+  end
+end
