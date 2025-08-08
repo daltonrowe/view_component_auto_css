@@ -23,4 +23,20 @@ class DemoTest < ApplicationSystemTestCase
     assert_backgrounds ".demo_import_component", 1, "purple"
     assert_backgrounds ".demo_import2_component", 1, "yellow"
   end
+
+  test "visiting the order demo version A" do
+    visit order_demo_url(params: { version: "A" })
+
+    assert_inlined_style "demo_order_component", 2
+
+    assert_backgrounds ".demo_order_component", 2, "red"
+  end
+
+  test "visiting the order demo version B" do
+    visit order_demo_url(params: { version: "B" })
+
+    assert_inlined_style "demo_order_component", 2
+
+    assert_backgrounds ".demo_order_component", 2, "red"
+  end
 end

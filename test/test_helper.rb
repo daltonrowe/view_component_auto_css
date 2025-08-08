@@ -33,7 +33,7 @@ module ActiveSupport
       assert_equal(names[backgrounds[0]], value)
     end
 
-    def assert_linked_style(stylesheet)
+    def assert_linked_style(stylesheet, count = 1)
       links = evaluate_script <<~SCRIPT
         (() => {
           const links = document.querySelectorAll("link[rel='stylesheet']");
@@ -43,10 +43,10 @@ module ActiveSupport
 
       matching_links = links.select { |l| l.include? stylesheet }
 
-      assert_equal(1, matching_links.length)
+      assert_equal(count, matching_links.length)
     end
 
-    def assert_inlined_style(selector)
+    def assert_inlined_style(selector, count = 1)
       styles = evaluate_script <<~SCRIPT
         (() => {
           const styles = document.querySelectorAll("style");
@@ -56,7 +56,7 @@ module ActiveSupport
 
       matching_styles = styles.select { |l| l.include? selector }
 
-      assert_equal(1, matching_styles.length)
+      assert_equal(count, matching_styles.length)
     end
   end
 end
