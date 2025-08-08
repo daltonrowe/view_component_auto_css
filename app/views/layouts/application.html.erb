@@ -24,13 +24,13 @@
     <%= vite_javascript_tag 'application' %>
 
     <!-- start inline sheets -->
-    <% @inline_stylesheets.each do |stylesheet| %>
+    <% inline_stylesheets.each do |stylesheet| %>
       <style><%== inline_stylesheet(stylesheet) %></style>
     <% end %>
     <!-- end inline sheets -->
 
     <!-- start linked sheets -->
-    <% @link_stylesheets.each do |stylesheet| %>
+    <% link_stylesheets.each do |stylesheet| %>
       <% link_stylesheet(stylesheet).each do |href| %>
         <link rel="stylesheet" href="<%= href %>">
       <% end %>

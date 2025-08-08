@@ -19,6 +19,10 @@ module StylesheetsConcern
     end
   end
 
+  def inline_stylesheets
+    @inline_stylesheets.sort
+  end
+
   def inline_stylesheet(stylesheet)
     entry = ViteRuby.instance.manifest.resolve_entries(stylesheet)
     css = ""
@@ -29,6 +33,10 @@ module StylesheetsConcern
     end
 
     css
+  end
+
+  def link_stylesheets
+    @link_stylesheets.sort
   end
 
   def link_stylesheet(stylesheet)
@@ -62,9 +70,14 @@ module StylesheetsConcern
 
   included do
     helper_method :use_stylesheet
-    helper_method :inline_stylesheet
-    helper_method :link_stylesheet
     helper_method :end_inline_stylesheets
+
+    helper_method :inline_stylesheets
+    helper_method :inline_stylesheet
+
+    helper_method :link_stylesheets
+    helper_method :link_stylesheet
+
     helper_method :print_stylesheets
   end
 end
