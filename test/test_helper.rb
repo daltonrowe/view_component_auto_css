@@ -30,5 +30,31 @@ module ActiveSupport
       assert_equal(1, backgrounds.uniq.length)
       assert_equal(names[backgrounds[0]], value)
     end
+
+    def assert_linked_style(stylesheet)
+      links = evaluate_script <<~SCRIPT
+        (() => {
+          const links = document.querySelectorAll("link[rel='stylesheet']");
+          return Array.from(links).map(link => link.getAttribute('href'))
+        })();
+      SCRIPT
+
+      matching_links = links.select { |l| l.include? stylesheet }
+
+      assert_equal(1, matching_links.length)
+    end
+
+    def assert_inlined_style(selector)
+      styles = evaluate_script <<~SCRIPT
+        (() => {
+          const styles = document.querySelectorAll("style");
+          return Array.from(styles).map(style => style.innerHTML)
+        })();
+      SCRIPT
+
+      matching_styles = styles.select { |l| l.include? selector }
+
+      assert_equal(1, matching_styles.length)
+    end
   end
 end
