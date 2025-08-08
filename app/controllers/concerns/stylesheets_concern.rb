@@ -37,7 +37,7 @@ module StylesheetsConcern
 
     entry[:scripts].each do |file|
       @rendered_stylesheets << file
-      hrefs << "#{Rails.root}/public#{file}"
+      hrefs << file
     end
 
     hrefs

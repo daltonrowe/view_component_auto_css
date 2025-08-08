@@ -30,9 +30,9 @@
     <!-- end inline sheets -->
 
     <!-- start linked sheets -->
-    <% @link_stylesheets.each do |to_link| %>
-      <% link_stylesheet(to_link).each do |stylesheet| %>
-        <link rel="stylesheet" href="<%= stylesheet %>">
+    <% @link_stylesheets.each do |stylesheet| %>
+      <% link_stylesheet(stylesheet).each do |href| %>
+        <link rel="stylesheet" href="<%= href %>">
       <% end %>
     <% end %>
     <!-- end inline sheets -->
