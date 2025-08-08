@@ -11,6 +11,7 @@ class DemoController < ApplicationController
 
   def order
     @version = params[:version].present? ? params[:version].upcase : "A"
+    @linked = params[:linked].present?
 
     @page_title = "View Component Auto CSS Ordering (#{@version})"
   end

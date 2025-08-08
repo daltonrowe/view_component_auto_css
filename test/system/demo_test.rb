@@ -39,4 +39,22 @@ class DemoTest < ApplicationSystemTestCase
 
     assert_backgrounds ".demo_order_component", 2, "red"
   end
+
+    test "visiting the order demo version A linked " do
+    visit order_demo_url(params: { version: "A", linked: true })
+
+    assert_linked_style "demo_order_a_component"
+    assert_linked_style "demo_order_b_component"
+
+    assert_backgrounds ".demo_order_component", 2, "red"
+  end
+
+  test "visiting the order demo version B linked" do
+    visit order_demo_url(params: { version: "B", linked: true })
+
+    assert_linked_style "demo_order_a_component"
+    assert_linked_style "demo_order_b_component"
+
+    assert_backgrounds ".demo_order_component", 2, "red"
+  end
 end
